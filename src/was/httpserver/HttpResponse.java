@@ -37,7 +37,7 @@ public class HttpResponse {
     }
 
     //응답 본문에 내용을 추가
-    public void writerBody(String body) {
+    public void writeBody(String body) {
         bodyBuilder.append(body);
     }
 
