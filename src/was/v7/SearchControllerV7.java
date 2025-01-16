@@ -2,6 +2,7 @@ package was.v7;
 
 import was.httpserver.HttpRequest;
 import was.httpserver.HttpResponse;
+import was.httpserver.servlet.annotation.Mapping;
 
 public class SearchControllerV7 {
 
