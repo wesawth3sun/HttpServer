@@ -32,7 +32,7 @@ public class ServletManager {
         try {
             // path, servlet 으로 저장되어있으니까
             // request 에서 path 가져오고, 없으면 default 띄워 주도록 함
-            HttpServlet servlet = servletMap.getOrDefault(request.getPath(), defaultServlet);
+           HttpServlet servlet = servletMap.getOrDefault(request.getPath(), defaultServlet);
             if (servlet == null) {
                 throw new PageNotFoundException("request url= " +
                         request.getPath());

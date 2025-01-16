@@ -4,6 +4,8 @@ import was.httpserver.HttpRequest;
 import was.httpserver.HttpResponse;
 import was.httpserver.HttpServlet;
 import was.httpserver.PageNotFoundException;
+import was.v7.Mapping;
+import was.v7.SearchControllerV7;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -31,16 +33,16 @@ public class ReflectionServlet implements HttpServlet {
             Method[] methods = aClass.getDeclaredMethods();
             for (Method method : methods) {
                 //메서드 이름을 가져오기 = path랑 비교하기 위해서
-                String methodName = method.getName();
-                if (path.equals("/" + methodName)) {
-                    try {
+                Mapping annotation = method.getAnnotation(Mapping.class);
+                try {
+                    if (annotation.value().equals(request.getPath())) {
                         method.invoke(controller, request, response);
                         return;
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException("Access to method denied", e);
-                    } catch (InvocationTargetException e) {
-                        throw new RuntimeException("Method invocation failed", e);
                     }
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException("Access to method denied", e);
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException("Method invocation failed", e);
                 }
             }
         }
