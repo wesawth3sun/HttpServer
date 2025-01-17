@@ -10,6 +10,6 @@ public class InternalErrorServlet implements HttpServlet {
     @Override
     public void service(HttpRequest request, HttpResponse response) throws IOException {
         response.setStatusCode(500);
-        response.writerBody("<h1>Internal Error</h1>");
+        response.writeBody("<h1>Internal Error</h1>");
     }
 }

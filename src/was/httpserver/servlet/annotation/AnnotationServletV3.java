@@ -26,7 +26,7 @@ public class AnnotationServletV3 implements HttpServlet {
             for (Method method : controller.getClass().getDeclaredMethods()) {
                 if (method.isAnnotationPresent(Mapping.class)) {
                     String path = method.getAnnotation(Mapping.class).value();
-// 중복 경로 체크
+                    // 중복 경로 체크
                     if (pathMap.containsKey(path)) {
                         ControllerMethod controllerMethod = pathMap.get(path);
                         throw new IllegalArgumentException("경로 중복 등록, path="
@@ -76,7 +76,7 @@ public class AnnotationServletV3 implements HttpServlet {
             try {
                 method.invoke(controller, args);
             } catch (IllegalAccessException | InvocationTargetException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
     }

@@ -9,9 +9,9 @@ public class SearchControllerV7 {
     @Mapping("/search")
     public void search(HttpRequest request, HttpResponse response) {
         String query = request.getParameter("q");
-        response.writerBody("<h1> Search </h1>");
-        response.writerBody("<ul>");
-        response.writerBody("<li> query: " + query + "</li>");
-        response.writerBody("</ul>");
+        response.writeBody("<h1> Search </h1>");
+        response.writeBody("<ul>");
+        response.writeBody("<li> query: " + query + "</li>");
+        response.writeBody("</ul>");
     }
 }

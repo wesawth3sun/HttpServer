@@ -7,6 +7,6 @@ import was.httpserver.HttpServlet;
 public class Site1Servlet implements HttpServlet {
     @Override
     public void service(HttpRequest request, HttpResponse response) {
-        response.writerBody("<h1> site1 </h1>");
+        response.writeBody("<h1> site1 </h1>");
     }
 }
